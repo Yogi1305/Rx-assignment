@@ -1,4 +1,4 @@
-import Client from "../model/User";
+import Client from "../model/User.js";
 
 export const clientregister = async (req, res) => {
   try {

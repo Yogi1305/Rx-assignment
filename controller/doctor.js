@@ -1,4 +1,4 @@
-import Doctor from "../model/doctor";
+import Doctor from "../model/doctor.js";
 
 export const doctorregister = async (req, res) => {
   try {
@@ -11,5 +11,21 @@ export const doctorregister = async (req, res) => {
     res.status(201).json({ message: 'Doctor registered successfully', doctor: newDoctor });
   } catch (error) {
     res.status(500).json({ message: 'Error registering doctor', error: error.message });
+  }
+}
+// get doctor details
+export const getDoctorDetails = async (req, res) => {
+  const doctorId = req.params.id;
+  if (!doctorId) {
+    return res.status(400).json({ message: 'Doctor ID is required' });
+  }
+  try {
+    const doctor = await Doctor.findById(doctorId);
+    if (!doctor) {
+      return res.status(404).json({ message: 'Doctor not found' });
+    }
+    res.status(200).json(doctor);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching doctor details', error: error.message });
   }
 }

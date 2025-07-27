@@ -1,4 +1,4 @@
-import Appointment from "../model/Appointment";
+import Appointment from "../model/Appointment.js";
 
 export const appointmentRegister = async (req, res) => {
   try {
@@ -21,5 +21,14 @@ export const appointmentRegister = async (req, res) => {
     res.status(201).json({ message: 'Appointment registered successfully', appointment: newAppointment });
   } catch (error) {
     res.status(500).json({ message: 'Error registering appointment', error: error.message });
+  }
+}
+
+export const getAppointments = async (req, res) => {
+  try {
+    const appointments = await Appointment.find().populate('clientId').populate('doctorId');
+    res.status(200).json(appointments);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching appointments', error: error.message });
   }
 }
