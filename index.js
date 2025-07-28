@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 dbConnect();
-app.use("/user", clientRoute);
+app.use("/client", clientRoute);
 app.use("/doctor", doctorRoute);
 app.use("/appointment", appointmentRoute);
 app.listen(PORT, () => {

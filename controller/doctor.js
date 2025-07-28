@@ -29,3 +29,16 @@ export const getDoctorDetails = async (req, res) => {
     res.status(500).json({ message: 'Error fetching doctor details', error: error.message });
   }
 }
+// get all doctors
+export const getAllDoctors = async (req, res) => { 
+  try {
+    const doctors = await Doctor.find();
+    if (!doctors || doctors.length === 0) {
+      return res.status(404).json({ message: 'No doctors found' });
+    }
+    res.status(200).json(doctors);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching doctors', error: error.message });
+    
+  }
+}

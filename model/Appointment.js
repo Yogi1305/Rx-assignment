@@ -1,21 +1,21 @@
 import mongoose from 'mongoose';
 
 const appointmentSchema = new mongoose.Schema({
-  client: {
+  clientId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Client',
     required: true
   },
-  doctor: {
+  doctorId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Doctor',
     required: true
   },
-  date: {
+  appointmentDate: {
     type: Date,
     required: true
   },
-  time: {
+  timeSlot: {
     type: String,
     required: true
   },
