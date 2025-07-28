@@ -45,7 +45,7 @@ export const getClientAppointments = async (req, res) => {
       return res.status(400).json({ message: 'Client ID is required' });
     }
     const appointments = await Appointment.find({ clientId }).populate('clientId').populate('doctorId');
-    res.status(200).json(appointments);
+    res.status(200).json({ message: 'Client appointments fetched successfully', appointments });
   } catch (error) {
     res.status(500).json({ message: 'Error fetching client appointments', error: error.message });
   }

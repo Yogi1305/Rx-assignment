@@ -3,6 +3,6 @@ import { appointmentRegister, cancelAppointment, getAppointments, getClientAppoi
 const router = express.Router();
 router.route("/getappoint").post(appointmentRegister)
 router.route("/:doctorId").get(getAppointments);
-router.route("/:clientId").get(getClientAppointments);
-router.route("/:appointmentId").delete(cancelAppointment);
+router.route("/client/:clientId").get(getClientAppointments);
+router.route("/cancel/:appointmentId").delete(cancelAppointment);
 export default router;
